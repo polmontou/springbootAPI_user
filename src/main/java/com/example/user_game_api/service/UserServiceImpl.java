@@ -24,16 +24,20 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDTO updateUser(UserLogsParams user) {
-        if (user.getId() != null) {
-            UserModel userModel = user.toUserModel();
-
-            return UserDTO.from(userRepository.save(userModel));
+        if (user.getId() == null) {
+            return null;
         }
-        return null;
+        UserModel userModel = user.toUserModel();
+
+        return UserDTO.from(userRepository.save(userModel));
     }
 
     @Override
     public boolean removeUser(UserLogsParams user) {
+        if (user.getId() == null) {
+            return false;
+        }
+
         UUID idToRemove = user.getId();
 
         userRepository.deleteById(idToRemove);
@@ -42,6 +46,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean checkUser(UserLogsParams user) {
+        if (user.getId() == null) {
+            return false;
+        }
         UserModel userModel = userRepository.findById(user.getId()).get();
 
         return userModel.getEmail().equals(user.getEmail()) && userModel.getPassword().equals(user.getPassword());

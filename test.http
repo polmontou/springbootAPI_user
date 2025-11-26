@@ -1,0 +1,51 @@
+###
+POST http://localhost:8080/user_api
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email":"toto@toto.toto",
+  "password":"toto"
+}
+
+###
+
+POST http://localhost:8080/user_api/check
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id":"4e71be4d-7757-4730-ae4d-f820cce3d4e6",
+  "email":"toto@toto.toto",
+  "password":"toto"
+}
+
+###
+POST http://localhost:8080/user_api/check
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email":"toto@toto.toto",
+  "password":"toto"
+}
+
+###
+PUT http://localhost:8080/user_api
+Accept: application/json
+Content-Type: application/json
+
+{
+  "id":"4e71be4d-7757-4730-ae4d-f820cce3d4e6",
+  "email":"toto@toto.toto",
+  "password":"topito"
+}
+###
+PUT http://localhost:8080/user_api
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email":"toto@toto.toto",
+  "password":"topitota"
+}
