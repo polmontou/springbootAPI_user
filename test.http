@@ -15,7 +15,7 @@ Accept: application/json
 Content-Type: application/json
 
 {
-  "id":"4e71be4d-7757-4730-ae4d-f820cce3d4e6",
+  "id":"0e8084c8-1ddf-4b07-abb6-556964822cad",
   "email":"toto@toto.toto",
   "password":"toto"
 }
@@ -34,9 +34,10 @@ Content-Type: application/json
 PUT http://localhost:8080/user_api
 Accept: application/json
 Content-Type: application/json
+X-UserId: 0e8084c8-1ddf-4b07-abb6-556964822cad
 
 {
-  "id":"4e71be4d-7757-4730-ae4d-f820cce3d4e6",
+  "id":"0e8084c8-1ddf-4b07-abb6-556964822cad",
   "email":"toto@toto.toto",
   "password":"topito"
 }
@@ -49,3 +50,6 @@ Content-Type: application/json
   "email":"toto@toto.toto",
   "password":"topitota"
 }
+
+###
+GET http://localhost:8080/user_api/users

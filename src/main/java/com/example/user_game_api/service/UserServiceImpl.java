@@ -7,6 +7,8 @@ import com.example.user_game_api.jpa.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -14,6 +16,22 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Override
+    public List<UUID> getAllUsers() {
+        Iterable<UserModel> users = userRepository.findAll();
+        List<UUID> userIds = new ArrayList<>();
+
+        for (UserModel user : users) {
+            userIds.add(user.getId());
+        }
+        return userIds;
+    }
+
+    @Override
+    public UserDTO getUserById(UUID id) {
+        return UserDTO.from(userRepository.findById(id).get());
+    }
 
     @Override
     public UserDTO addUser(UserLogsParams user) {
