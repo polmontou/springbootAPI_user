@@ -102,7 +102,7 @@ public class UserController {
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "true si identifiants valides, false sinon")
     })
-    public boolean checkUser(
+    public UUID checkUser(
             @Parameter(description = "Identifiants de connexion à vérifier", required = true)
             @RequestBody UserLogsParams user) {
         return userService.checkUser(user);

@@ -1,16 +1,35 @@
-###
-POST http://localhost:8080/user_api
-Accept: application/json
-Content-Type: application/json
+#### Création
+#POST http://localhost:8081/user_api
+#Accept: application/json
+#Content-Type: application/json
+#
+#{
+#  "email":"toto@toto.toto",
+#  "password":"toto"
+#}
+#
+#### Création
+#POST http://localhost:8081/user_api
+#Accept: application/json
+#Content-Type: application/json
+#
+#{
+#  "email":"titi@titi.titi",
+#  "password":"titi"
+#}
+#
+#### Création
+#POST http://localhost:8081/user_api
+#Accept: application/json
+#Content-Type: application/json
+#
+#{
+#  "email":"tutu@tutu.tutu",
+#  "password":"tutu"
+#}
+####
 
-{
-  "email":"toto@toto.toto",
-  "password":"toto"
-}
-
-###
-
-POST http://localhost:8080/user_api/check
+POST http://localhost:8081/user_api/check
 Accept: application/json
 Content-Type: application/json
 
@@ -21,7 +40,7 @@ Content-Type: application/json
 }
 
 ###
-POST http://localhost:8080/user_api/check
+POST http://localhost:8081/user_api/check
 Accept: application/json
 Content-Type: application/json
 
@@ -31,7 +50,7 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/user_api
+PUT http://localhost:8081/user_api
 Accept: application/json
 Content-Type: application/json
 X-UserId: 0e8084c8-1ddf-4b07-abb6-556964822cad
@@ -42,7 +61,7 @@ X-UserId: 0e8084c8-1ddf-4b07-abb6-556964822cad
   "password":"topito"
 }
 ###
-PUT http://localhost:8080/user_api
+PUT http://localhost:8081/user_api
 Accept: application/json
 Content-Type: application/json
 
@@ -52,4 +71,11 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:8080/user_api/users
+POST http://localhost:8081/user_api/check
+Accept: application/json
+Content-Type: application/json
+
+{
+  "email": "tutu@tutu.tutu",
+  "password": "tutu"
+}

@@ -13,5 +13,5 @@ public interface UserService {
     UserDTO updateUser(UserLogsParams user);
     List<UUID> getAllUsers();
     boolean removeUser(UserLogsParams user);
-    boolean checkUser(UserLogsParams user);
+    UUID checkUser(UserLogsParams user);
 }

@@ -4,6 +4,8 @@ import com.example.user_game_api.dataclass.UserDTO;
 import com.example.user_game_api.dataclass.UserLogsParams;
 import com.example.user_game_api.jpa.UserModel;
 import com.example.user_game_api.jpa.UserRepository;
+import jakarta.persistence.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +15,8 @@ import java.util.UUID;
 
 @Service
 public class UserServiceImpl implements UserService {
+    @PersistenceContext
+    private EntityManager entityManager;
 
     @Autowired
     private UserRepository userRepository;
@@ -63,12 +67,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public boolean checkUser(UserLogsParams user) {
-        if (user.getId() == null) {
-            return false;
-        }
-        UserModel userModel = userRepository.findById(user.getId()).get();
+    public UUID checkUser(UserLogsParams user) {
+        String select = "SELECT u FROM UserModel u WHERE u.email=:email and u.password=:password";
+        TypedQuery<UserModel> query = entityManager.createQuery(select, UserModel.class);
+        query.setParameter("email", user.getEmail());
+        query.setParameter("password", user.getPassword());
 
-        return userModel.getEmail().equals(user.getEmail()) && userModel.getPassword().equals(user.getPassword());
+        List<UserModel> userModel = query.getResultList();
+
+        if  (userModel.isEmpty()) {
+            return null;
+        }
+        return userModel.getFirst().getId();
     }
 }
